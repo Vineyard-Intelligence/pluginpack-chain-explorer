@@ -1,0 +1,11 @@
+{
+ "scenario": "tx-xrpl",
+ "recorded": "2026-11-15",
+ "tape": [
+  {
+   "key": "POST https://xrplcluster.com/ {\"method\":\"tx\",\"params\":[{\"transaction\":\"F7238057FBB9AC698F2E69A11BBC3ADE5A1E131796CDE7AED1A8412DD7EC36FB\",\"binary\":false}]}",
+   "status": 200,
+   "body": "{\"result\":{\"Account\":\"rHXgaJLpjDe4jsAiF8atNrRfS6eYrjPYPB\",\"Amount\":\"1\",\"DeliverMax\":\"1\",\"Destination\":\"rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w\",\"DestinationTag\":1,\"Fee\":\"10\",\"Sequence\":107549898,\"TransactionType\":\"Payment\",\"ctid\":\"C659E80B00B60000\",\"date\":841061420,\"hash\":\"F7238057FBB9AC698F2E69A11BBC3ADE5A1E131796CDE7AED1A8412DD7EC36FB\",\"inLedger\":106555403,\"ledger_index\":106555403,\"meta\":{\"TransactionIndex\":182,\"TransactionResult\":\"tesSUCCESS\",\"delivered_amount\":\"1\"},\"validated\":true,\"status\":\"success\"}}"
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+{
+ "scenario": "tx-zcash",
+ "recorded": "2026-11-15",
+ "tape": [
+  {
+   "key": "GET https://sochain.com/api/v3/transaction/ZEC/ac4958cc04b2d4ebf14cb1e4d1b9f707f4bf989b376df910c71bb5c3f5d47725 ",
+   "status": 200,
+   "body": "{\"status\":\"success\",\"data\":{\"hash\":\"ac4958cc04b2d4ebf14cb1e4d1b9f707f4bf989b376df910c71bb5c3f5d47725\",\"confirmations\":112,\"size\":142,\"vsize\":142,\"weight\":568,\"version\":6,\"locktime\":0,\"block_hash\":\"0000000000e5c812a67760ef27b845053a5b9bc9d1eb000d6153427d304bb959\",\"block_height\":3575590,\"time\":1794741474,\"inputs_n\":1,\"outputs_n\":2,\"inputs_value\":\"0.00000000\",\"outputs_value\":\"0.45833334\",\"fee\":\"0.00000000\",\"inputs\":[{\"index\":0,\"value\":\"0.00000000\",\"address\":null,\"previous_output\":null,\"sequence\":4294967295}],\"outputs\":[{\"index\":0,\"value\":\"0.41666668\",\"address\":\"t1MKn34KBa8Xh4g8qU8psibBXvURafphVn7\",\"type\":\"pubkeyhash\",\"script\":{\"hex\":\"76a91425db9091e9786867e536f70089a5102523ab1d6a88ac\",\"asm\":\"OP_DUP OP_HASH160 25db9091e9786867e536f70089a5102523ab1d6a OP_EQUALVERIFY OP_CHECKSIG\"},\"spent\":null,\"is_change\":null},{\"index\":1,\"value\":\"0.04166666\",\"address\":\"t3cFfPt1Bcvgez9ZbMBFWeZsskxTkPzGCow\",\"type\":\"scripthash\",\"script\":{\"hex\":\"a914c20cd5bdf7964ca61764db66bc2531b1792a084d87\",\"asm\":\"OP_HASH160 c20cd5bdf7964ca61764db66bc2531b1792a084d OP_EQUAL\"},\"spent\":null,\"is_change\":null}],\"shielded\":{\"sprout\":\"0.00000000\",\"sapling\":\"0.00000000\",\"orchard\":\"0.00000000\",\"ironwood\":\"0.00000000\",\"net\":\"0.00000000\"},\"kind\":null,\"heuristic\":null}}"
+  }
+ ]
+}

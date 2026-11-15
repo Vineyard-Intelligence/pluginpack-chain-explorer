@@ -1,0 +1,74 @@
+{
+ "scenario": "identify-mixed",
+ "recorded": "2026-11-15",
+ "tape": [
+  {
+   "key": "POST https://ethereum-rpc.publicnode.com [{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_getTransactionCount\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"eth_getBalance\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"eth_getCode\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]}]",
+   "status": 200,
+   "body": "[{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0x1752\"},{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":\"0x507a1459b4fdc8fc\"},{\"jsonrpc\":\"2.0\",\"id\":3,\"result\":\"0xef01005a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d\"}]"
+  },
+  {
+   "key": "POST https://bsc-rpc.publicnode.com [{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_getTransactionCount\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"eth_getBalance\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"eth_getCode\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]}]",
+   "status": 200,
+   "body": "[{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0xe\"},{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":\"0x25c400add131c68\"},{\"jsonrpc\":\"2.0\",\"id\":3,\"result\":\"0xef01005a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d\"}]"
+  },
+  {
+   "key": "POST https://polygon-bor-rpc.publicnode.com [{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_getTransactionCount\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"eth_getBalance\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"eth_getCode\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]}]",
+   "status": 200,
+   "body": "[{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0x1\"},{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":\"0x2021a3fad087721dc1\"},{\"jsonrpc\":\"2.0\",\"id\":3,\"result\":\"0x\"}]"
+  },
+  {
+   "key": "POST https://arbitrum-one-rpc.publicnode.com [{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_getTransactionCount\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"eth_getBalance\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"eth_getCode\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]}]",
+   "status": 200,
+   "body": "[{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0xe\"},{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":\"0x2365826e5ef57f9\"},{\"jsonrpc\":\"2.0\",\"id\":3,\"result\":\"0x\"}]"
+  },
+  {
+   "key": "POST https://optimism-rpc.publicnode.com [{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_getTransactionCount\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"eth_getBalance\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"eth_getCode\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]}]",
+   "status": 200,
+   "body": "[{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0x28\"},{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":\"0x28352ededcd844f\"},{\"jsonrpc\":\"2.0\",\"id\":3,\"result\":\"0xef01005a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d\"}]"
+  },
+  {
+   "key": "POST https://base-rpc.publicnode.com [{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_getTransactionCount\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"eth_getBalance\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"eth_getCode\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]}]",
+   "status": 200,
+   "body": "[{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0x46\"},{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":\"0x2b6beb6635f3db28\"},{\"jsonrpc\":\"2.0\",\"id\":3,\"result\":\"0xef01005a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d\"}]"
+  },
+  {
+   "key": "POST https://avalanche-c-chain-rpc.publicnode.com [{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_getTransactionCount\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"eth_getBalance\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"eth_getCode\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]}]",
+   "status": 200,
+   "body": "[{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0x0\"},{\"jsonrpc\":\"2.0\",\"id\":2,\"result\":\"0x4827624f010438c\"},{\"jsonrpc\":\"2.0\",\"id\":3,\"result\":\"0x\"}]"
+  },
+  {
+   "key": "POST https://etc.blockscout.com/api/eth-rpc [{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_getTransactionCount\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":2,\"method\":\"eth_getBalance\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]},{\"jsonrpc\":\"2.0\",\"id\":3,\"method\":\"eth_getCode\",\"params\":[\"0xd8da6bf26964af9d7eed9e03e53415d37aa96045\",\"latest\"]}]",
+   "status": 200,
+   "body": "[{\"jsonrpc\":\"2.0\",\"result\":\"0x233\",\"id\":1},{\"jsonrpc\":\"2.0\",\"result\":\"0x11da6cf613baaa052e\",\"id\":2},{\"jsonrpc\":\"2.0\",\"result\":\"0x\",\"id\":3}]"
+  },
+  {
+   "key": "GET https://mempool.space/api/address/1XPTgDRhN8RFnzniWCddobD9iKZatrvH4 ",
+   "error": "NetworkError"
+  },
+  {
+   "key": "GET https://mempool.space/api/address/1XPTgDRhN8RFnzniWCddobD9iKZatrvH4 ",
+   "error": "NetworkError"
+  },
+  {
+   "key": "GET https://blockstream.info/api/address/1XPTgDRhN8RFnzniWCddobD9iKZatrvH4 ",
+   "status": 200,
+   "body": "{\"address\":\"1XPTgDRhN8RFnzniWCddobD9iKZatrvH4\",\"chain_stats\":{\"funded_txo_count\":3362,\"funded_txo_sum\":8143212340766,\"spent_txo_count\":3299,\"spent_txo_sum\":8143209105984,\"tx_count\":3398},\"mempool_stats\":{\"funded_txo_count\":0,\"funded_txo_sum\":0,\"spent_txo_count\":0,\"spent_txo_sum\":0,\"tx_count\":0}}"
+  },
+  {
+   "key": "GET https://api.haskoin.com/bch/address/qqzm7w36af3ntgu5ns9r28ln4l963p8py5qs3geee5/balance ",
+   "status": 200,
+   "body": "{\"address\":\"bitcoincash:qqzm7w36af3ntgu5ns9r28ln4l963p8py5qs3geee5\",\"confirmed\":26638,\"unconfirmed\":0,\"utxo\":4,\"txs\":3327,\"received\":8143209037662}"
+  },
+  {
+   "key": "GET https://sochain.com/api/v3/address_summary/DOGE/DTVc1s63gmVbdp9KfTpAda34tAJaWiAfww ",
+   "status": 200,
+   "body": "{\"status\":\"success\",\"data\":{\"txs_sent\":40,\"txs_received\":100,\"txs_total\":100,\"confirmed_balance\":\"291.31558081\",\"unconfirmed_balance\":\"0.00000000\",\"confirmed_received\":\"141482.54027442\",\"first_active\":{\"height\":5755404,\"time\":1750184345},\"last_active\":{\"height\":6458560,\"time\":1794741267}}}"
+  },
+  {
+   "key": "GET https://toncenter.com/api/v3/account?address=0%3A83dfd552e63729b472fcbcc8c45ebcc6691702558b68ec7527e1ba403a0f31a8 ",
+   "status": 200,
+   "body": "{\"balance\":\"1592543993437233\",\"code\":\"te6ccgEBAQEAcQAA3v8AIN0gggFMl7ohggEznLqxn3Gw7UTQ0x/THzHXC//jBOCk8mCDCNcYINMf0x/TH/gjE7vyY+1E0NMf0x/T/9FRMrryoVFEuvKiBPkBVBBV+RDyo/gAkyDXSpbTB9QC+wDo0QGkyMsfyx/L/8ntVA==\",\"data\":\"te6ccgEBAQEAKgAAUAAAAVcpqaMXcsnta2Km4uuhSpO5BGLno2d3e+uKOPsVufM4RNIs4v8=\",\"last_transaction_lt\":\"116778852000015\",\"last_transaction_hash\":\"NhLrbvcYuo71VhOkjax/WSfAaf9H4OQWRVvKYe4RlhE=\",\"frozen_hash\":null,\"status\":\"active\"}"
+  }
+ ]
+}

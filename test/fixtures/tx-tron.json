@@ -1,0 +1,31 @@
+{
+ "scenario": "tx-tron",
+ "recorded": "2026-11-15",
+ "tape": [
+  {
+   "key": "POST https://api.trongrid.io/wallet/gettransactionbyid {\"value\":\"f567b655e52c924b9b8ef1c7faeda4a2b8de7ac6310f1205c7143e9a0265cec0\",\"visible\":true}",
+   "status": 200,
+   "body": "{\"raw_data\":{\"ref_block_bytes\":\"611a\",\"ref_block_hash\":\"62bc9c66bc1ab356\",\"expiration\":1794632385000,\"contract\":[{\"parameter\":{\"value\":{\"owner_address\":\"TQNXVwTp7aaHfTwow36F1SWpWthAv7UZBP\",\"contract_address\":\"TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t\",\"data\":\"a9059cbb000000000000000000000041d1c4bb7b2f39aba5707711719b2236b5b605af2e00000000000000000000000000000000000000000000000000000000004dd1e0\"},\"type_url\":\"type.googleapis.com/protocol.TriggerSmartContract\"},\"type\":\"TriggerSmartContract\"}],\"timestamp\":1794596385000,\"fee_limit\":6446000},\"ret\":[{\"contractRet\":\"SUCCESS\"}],\"txID\":\"f567b655e52c924b9b8ef1c7faeda4a2b8de7ac6310f1205c7143e9a0265cec0\"}"
+  },
+  {
+   "key": "POST https://api.trongrid.io/wallet/gettransactioninfobyid {\"value\":\"f567b655e52c924b9b8ef1c7faeda4a2b8de7ac6310f1205c7143e9a0265cec0\"}",
+   "status": 200,
+   "body": "{\"id\":\"f567b655e52c924b9b8ef1c7faeda4a2b8de7ac6310f1205c7143e9a0265cec0\",\"fee\":345000,\"blockNumber\":87974171,\"blockTimeStamp\":1794596388000,\"contractResult\":[\"0000000000000000000000000000000000000000000000000000000000000000\"],\"contract_address\":\"41a614f803b6fd780986a42c78ec9c7f77e6ded13c\",\"receipt\":{\"energy_usage\":64285,\"energy_usage_total\":64285,\"net_fee\":345000,\"result\":\"SUCCESS\"},\"log\":[{\"address\":\"a614f803b6fd780986a42c78ec9c7f77e6ded13c\",\"topics\":[\"ddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef\",\"0000000000000000000000009dfac4f77821e963f06e916d65c24a533aedee79\",\"000000000000000000000000d1c4bb7b2f39aba5707711719b2236b5b605af2e\"],\"data\":\"00000000000000000000000000000000000000000000000000000000004dd1e0\"}]}"
+  },
+  {
+   "key": "POST https://api.trongrid.io/wallet/triggerconstantcontract {\"owner_address\":\"T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb\",\"contract_address\":\"TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t\",\"function_selector\":\"name()\",\"parameter\":\"\",\"visible\":true}",
+   "status": 200,
+   "body": "{\"transaction\":{\"raw_data\":{\"ref_block_bytes\":\"21ed\",\"ref_block_hash\":\"67aeb077a8a00bbb\",\"expiration\":1794744630000,\"contract\":[{\"parameter\":{\"value\":{\"owner_address\":\"T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb\",\"contract_address\":\"TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t\",\"data\":\"06fdde03\"},\"type_url\":\"type.googleapis.com/protocol.TriggerSmartContract\"},\"type\":\"TriggerSmartContract\"}],\"timestamp\":1794744572914},\"ret\":[{}],\"txID\":\"b645aee1369187f0b53125f6d747e1b64c8bd236123e57d41ecb676be232eb9a\",\"visible\":true},\"constant_result\":[\"0000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000a5465746865722055534400000000000000000000000000000000000000000000\"],\"result\":{\"result\":true},\"energy_used\":4098,\"energy_penalty\":3152}"
+  },
+  {
+   "key": "POST https://api.trongrid.io/wallet/triggerconstantcontract {\"owner_address\":\"T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb\",\"contract_address\":\"TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t\",\"function_selector\":\"symbol()\",\"parameter\":\"\",\"visible\":true}",
+   "status": 200,
+   "body": "{\"transaction\":{\"raw_data\":{\"ref_block_bytes\":\"21ed\",\"ref_block_hash\":\"67aeb077a8a00bbb\",\"expiration\":1794744630000,\"contract\":[{\"parameter\":{\"value\":{\"owner_address\":\"T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb\",\"contract_address\":\"TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t\",\"data\":\"95d89b41\"},\"type_url\":\"type.googleapis.com/protocol.TriggerSmartContract\"},\"type\":\"TriggerSmartContract\"}],\"timestamp\":1794744573404},\"ret\":[{}],\"txID\":\"e9870b46524dbda647518e2c71b75792753d2ca45f3313a2f2c759760b2d82e8\",\"visible\":true},\"constant_result\":[\"000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000045553445400000000000000000000000000000000000000000000000000000000\"],\"result\":{\"result\":true},\"energy_used\":5922,\"energy_penalty\":4558}"
+  },
+  {
+   "key": "POST https://api.trongrid.io/wallet/triggerconstantcontract {\"owner_address\":\"T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb\",\"contract_address\":\"TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t\",\"function_selector\":\"decimals()\",\"parameter\":\"\",\"visible\":true}",
+   "status": 200,
+   "body": "{\"transaction\":{\"raw_data\":{\"ref_block_bytes\":\"21ed\",\"ref_block_hash\":\"67aeb077a8a00bbb\",\"expiration\":1794744630000,\"contract\":[{\"parameter\":{\"value\":{\"owner_address\":\"T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb\",\"contract_address\":\"TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t\",\"data\":\"313ce567\"},\"type_url\":\"type.googleapis.com/protocol.TriggerSmartContract\"},\"type\":\"TriggerSmartContract\"}],\"timestamp\":1794744573617},\"ret\":[{}],\"txID\":\"6b82ac5ac638fa4dfaff26c678565fa9d3124396f564115f8f2afb7336c2ed0d\",\"visible\":true},\"constant_result\":[\"0000000000000000000000000000000000000000000000000000000000000006\"],\"result\":{\"result\":true},\"energy_used\":2207,\"energy_penalty\":1699}"
+  }
+ ]
+}

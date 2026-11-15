@@ -1,0 +1,16 @@
+{
+ "scenario": "tx-litecoin-sochain",
+ "recorded": "2026-11-15",
+ "tape": [
+  {
+   "key": "GET https://litecoinspace.org/api/tx/924fff86fe4314b61af07a3a897304e16b18ff022590f7b855715b501f92d425 ",
+   "status": 429,
+   "body": "{\"error\":\"blocked by the test to exercise the next vendor\"}"
+  },
+  {
+   "key": "GET https://sochain.com/api/v3/transaction/LTC/924fff86fe4314b61af07a3a897304e16b18ff022590f7b855715b501f92d425 ",
+   "status": 200,
+   "body": "{\"status\":\"success\",\"data\":{\"hash\":\"924fff86fe4314b61af07a3a897304e16b18ff022590f7b855715b501f92d425\",\"confirmations\":25,\"size\":490,\"vsize\":248,\"weight\":991,\"version\":2,\"locktime\":3213535,\"block_hash\":\"e37185a50621ab1d92e4d1722d23d55c9862c141bae194faaa257d64ecace8de\",\"block_height\":3213536,\"time\":1794740940,\"inputs_n\":3,\"outputs_n\":1,\"inputs_value\":\"0.42654317\",\"outputs_value\":\"0.42651056\",\"fee\":\"0.00003261\",\"inputs\":[{\"index\":0,\"value\":\"0.20166641\",\"address\":\"ltc1q99pkj6f6pmyj6rvxlzzrm3sckaqxrsafh8xzlz\",\"previous_output\":{\"hash\":\"681a21d1c6638406ac633ce1b4216371e6534a2087688bcfe7d4d7523baec134\",\"index\":1},\"sequence\":4294967294},{\"index\":1,\"value\":\"0.01088270\",\"address\":\"ltc1quhm2d0veeasysey9qaxag9q2xdf3jxnl9telzl\",\"previous_output\":{\"hash\":\"bf58228ef70fdfb4139917faa6b92066d9e404cb2f82682780da62673daaf208\",\"index\":1},\"sequence\":4294967294},{\"index\":2,\"value\":\"0.21399406\",\"address\":\"ltc1qdcfwd9g4epwgj63hj47z3zywh8r2xg9gqww89a\",\"previous_output\":{\"hash\":\"d28a1f3f49edf6eaf7b8d0a5775e26bce6e471b8da5b7c4a21613914a863e6a0\",\"index\":0},\"sequence\":4294967294}],\"outputs\":[{\"index\":0,\"value\":\"0.42651056\",\"address\":\"LKcKHmHMYA9n5htDNAAcngSmmgXg8LGpBB\",\"type\":\"pubkeyhash\",\"script\":{\"hex\":\"76a914043ab4123c57308cbaa24ec806208b2332aaebc588ac\",\"asm\":\"OP_DUP OP_HASH160 043ab4123c57308cbaa24ec806208b2332aaebc5 OP_EQUALVERIFY OP_CHECKSIG\"},\"spent\":null,\"is_change\":null}],\"kind\":\"payment\",\"heuristic\":false}}"
+  }
+ ]
+}

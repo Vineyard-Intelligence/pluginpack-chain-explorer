@@ -1,0 +1,21 @@
+{
+ "scenario": "tx-litecoin-blockcypher",
+ "recorded": "2026-11-15",
+ "tape": [
+  {
+   "key": "GET https://litecoinspace.org/api/tx/924fff86fe4314b61af07a3a897304e16b18ff022590f7b855715b501f92d425 ",
+   "status": 429,
+   "body": "{\"error\":\"blocked by the test to exercise the next vendor\"}"
+  },
+  {
+   "key": "GET https://sochain.com/api/v3/transaction/LTC/924fff86fe4314b61af07a3a897304e16b18ff022590f7b855715b501f92d425 ",
+   "status": 429,
+   "body": "{\"error\":\"blocked by the test to exercise the next vendor\"}"
+  },
+  {
+   "key": "GET https://api.blockcypher.com/v1/ltc/main/txs/924fff86fe4314b61af07a3a897304e16b18ff022590f7b855715b501f92d425?limit=50 ",
+   "status": 200,
+   "body": "{\"block_hash\":\"e37185a50621ab1d92e4d1722d23d55c9862c141bae194faaa257d64ecace8de\",\"block_height\":3213536,\"block_index\":4,\"hash\":\"924fff86fe4314b61af07a3a897304e16b18ff022590f7b855715b501f92d425\",\"addresses\":[\"LKcKHmHMYA9n5htDNAAcngSmmgXg8LGpBB\",\"ltc1q99pkj6f6pmyj6rvxlzzrm3sckaqxrsafh8xzlz\",\"ltc1qdcfwd9g4epwgj63hj47z3zywh8r2xg9gqww89a\",\"ltc1quhm2d0veeasysey9qaxag9q2xdf3jxnl9telzl\"],\"total\":42651056,\"fees\":3261,\"size\":490,\"vsize\":248,\"preference\":\"low\",\"relayed_by\":\"13.140.165.186:9333\",\"confirmed\":\"2026-11-15T11:09:00Z\",\"received\":\"2026-11-15T11:08:47.056Z\",\"ver\":2,\"lock_time\":3213535,\"double_spend\":false,\"vin_sz\":3,\"vout_sz\":1,\"confirmations\":25,\"confidence\":1,\"inputs\":[{\"prev_hash\":\"681a21d1c6638406ac633ce1b4216371e6534a2087688bcfe7d4d7523baec134\",\"output_index\":1,\"output_value\":20166641,\"sequence\":4294967294,\"addresses\":[\"ltc1q99pkj6f6pmyj6rvxlzzrm3sckaqxrsafh8xzlz\"],\"script_type\":\"pay-to-witness-pubkey-hash\",\"age\":3213516},{\"prev_hash\":\"bf58228ef70fdfb4139917faa6b92066d9e404cb2f82682780da62673daaf208\",\"output_index\":1,\"output_value\":1088270,\"sequence\":4294967294,\"addresses\":[\"ltc1quhm2d0veeasysey9qaxag9q2xdf3jxnl9telzl\"],\"script_type\":\"pay-to-witness-pubkey-hash\",\"age\":3213532},{\"prev_hash\":\"d28a1f3f49edf6eaf7b8d0a5775e26bce6e471b8da5b7c4a21613914a863e6a0\",\"output_index\":0,\"output_value\":21399406,\"sequence\":4294967294,\"addresses\":[\"ltc1qdcfwd9g4epwgj63hj47z3zywh8r2xg9gqww89a\"],\"script_type\":\"pay-to-witness-pubkey-hash\",\"age\":3213512}],\"outputs\":[{\"value\":42651056,\"script\":\"76a914043ab4123c57308cbaa24ec806208b2332aaebc588ac\",\"addresses\":[\"LKcKHmHMYA9n5htDNAAcngSmmgXg8LGpBB\"],\"script_type\":\"pay-to-pubkey-hash\"}]}"
+  }
+ ]
+}

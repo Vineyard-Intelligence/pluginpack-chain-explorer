@@ -1,0 +1,11 @@
+{
+ "scenario": "tx-litecoin",
+ "recorded": "2026-11-15",
+ "tape": [
+  {
+   "key": "GET https://litecoinspace.org/api/tx/924fff86fe4314b61af07a3a897304e16b18ff022590f7b855715b501f92d425 ",
+   "status": 200,
+   "body": "{\"txid\":\"924fff86fe4314b61af07a3a897304e16b18ff022590f7b855715b501f92d425\",\"version\":2,\"locktime\":3213535,\"vin\":[{\"txid\":\"681a21d1c6638406ac633ce1b4216371e6534a2087688bcfe7d4d7523baec134\",\"vout\":1,\"prevout\":{\"scriptpubkey\":\"0014294369693a0ec92d0d86f8843dc618b74061c3a9\",\"scriptpubkey_type\":\"v0_p2wpkh\",\"scriptpubkey_address\":\"ltc1q99pkj6f6pmyj6rvxlzzrm3sckaqxrsafh8xzlz\",\"value\":20166641},\"is_coinbase\":false,\"sequence\":4294967294},{\"txid\":\"bf58228ef70fdfb4139917faa6b92066d9e404cb2f82682780da62673daaf208\",\"vout\":1,\"prevout\":{\"scriptpubkey\":\"0014e5f6a6bd99cf60486485074dd4140a3353191a7f\",\"scriptpubkey_type\":\"v0_p2wpkh\",\"scriptpubkey_address\":\"ltc1quhm2d0veeasysey9qaxag9q2xdf3jxnl9telzl\",\"value\":1088270},\"is_coinbase\":false,\"sequence\":4294967294},{\"txid\":\"d28a1f3f49edf6eaf7b8d0a5775e26bce6e471b8da5b7c4a21613914a863e6a0\",\"vout\":0,\"prevout\":{\"scriptpubkey\":\"00146e12e69515c85c896a37957c28888eb9c6a320a8\",\"scriptpubkey_type\":\"v0_p2wpkh\",\"scriptpubkey_address\":\"ltc1qdcfwd9g4epwgj63hj47z3zywh8r2xg9gqww89a\",\"value\":21399406},\"is_coinbase\":false,\"sequence\":4294967294}],\"vout\":[{\"scriptpubkey\":\"76a914043ab4123c57308cbaa24ec806208b2332aaebc588ac\",\"scriptpubkey_type\":\"p2pkh\",\"scriptpubkey_address\":\"LKcKHmHMYA9n5htDNAAcngSmmgXg8LGpBB\",\"value\":42651056}],\"size\":490,\"weight\":991,\"sigops\":7,\"fee\":3261,\"status\":{\"confirmed\":true,\"block_height\":3213536,\"block_hash\":\"e37185a50621ab1d92e4d1722d23d55c9862c141bae194faaa257d64ecace8de\",\"block_time\":1794740940}}"
+  }
+ ]
+}

@@ -1,0 +1,46 @@
+{
+ "scenario": "freeze",
+ "recorded": "2026-11-15",
+ "tape": [
+  {
+   "key": "POST https://ethereum-rpc.publicnode.com {\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_call\",\"params\":[{\"to\":\"0xdac17f958d2ee523a2206206994597c13d831ec7\",\"data\":\"0xe47d60600000000000000000000000005227f603c1ee34ce3c06efe6477003bdfccb2f8c\"},\"latest\"]}",
+   "status": 200,
+   "body": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0x0000000000000000000000000000000000000000000000000000000000000001\"}"
+  },
+  {
+   "key": "POST https://ethereum-rpc.publicnode.com {\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_call\",\"params\":[{\"to\":\"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\"data\":\"0xfe575a870000000000000000000000005227f603c1ee34ce3c06efe6477003bdfccb2f8c\"},\"latest\"]}",
+   "status": 200,
+   "body": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0x0000000000000000000000000000000000000000000000000000000000000001\"}"
+  },
+  {
+   "key": "POST https://ethereum-rpc.publicnode.com {\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_call\",\"params\":[{\"to\":\"0xdac17f958d2ee523a2206206994597c13d831ec7\",\"data\":\"0xe47d606000000000000000000000000015f9c7149dae4d04e66e031f4cab8cb358a86909\"},\"latest\"]}",
+   "status": 200,
+   "body": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0x0000000000000000000000000000000000000000000000000000000000000000\"}"
+  },
+  {
+   "key": "POST https://ethereum-rpc.publicnode.com {\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_call\",\"params\":[{\"to\":\"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\"data\":\"0xfe575a8700000000000000000000000015f9c7149dae4d04e66e031f4cab8cb358a86909\"},\"latest\"]}",
+   "status": 200,
+   "body": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0x0000000000000000000000000000000000000000000000000000000000000001\"}"
+  },
+  {
+   "key": "POST https://ethereum-rpc.publicnode.com {\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_call\",\"params\":[{\"to\":\"0xdac17f958d2ee523a2206206994597c13d831ec7\",\"data\":\"0xe47d6060000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045\"},\"latest\"]}",
+   "status": 200,
+   "body": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0x0000000000000000000000000000000000000000000000000000000000000000\"}"
+  },
+  {
+   "key": "POST https://ethereum-rpc.publicnode.com {\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"eth_call\",\"params\":[{\"to\":\"0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48\",\"data\":\"0xfe575a87000000000000000000000000d8da6bf26964af9d7eed9e03e53415d37aa96045\"},\"latest\"]}",
+   "status": 200,
+   "body": "{\"jsonrpc\":\"2.0\",\"id\":1,\"result\":\"0x0000000000000000000000000000000000000000000000000000000000000000\"}"
+  },
+  {
+   "key": "POST https://api.trongrid.io/wallet/triggerconstantcontract {\"owner_address\":\"T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb\",\"contract_address\":\"TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t\",\"function_selector\":\"isBlackListed(address)\",\"parameter\":\"0000000000000000000000000288d1220ac3c74313786c69bca212320344c3a2\",\"visible\":true}",
+   "status": 200,
+   "body": "{\"transaction\":{\"raw_data\":{\"ref_block_bytes\":\"21f5\",\"ref_block_hash\":\"a07d683f2dc52651\",\"expiration\":1794744654000,\"contract\":[{\"parameter\":{\"value\":{\"owner_address\":\"T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb\",\"contract_address\":\"TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t\",\"data\":\"e47d60600000000000000000000000000288d1220ac3c74313786c69bca212320344c3a2\"},\"type_url\":\"type.googleapis.com/protocol.TriggerSmartContract\"},\"type\":\"TriggerSmartContract\"}],\"timestamp\":1794744594892},\"ret\":[{}],\"txID\":\"26942d3062213e1b182e0e6d98200b15e765a15f5b56588d406b9a7edb8d5e08\",\"visible\":true},\"constant_result\":[\"0000000000000000000000000000000000000000000000000000000000000001\"],\"result\":{\"result\":true},\"energy_used\":4658,\"energy_penalty\":3587}"
+  },
+  {
+   "key": "POST https://api.trongrid.io/wallet/triggerconstantcontract {\"owner_address\":\"T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb\",\"contract_address\":\"TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t\",\"function_selector\":\"isBlackListed(address)\",\"parameter\":\"000000000000000000000000d1c4bb7b2f39aba5707711719b2236b5b605af2e\",\"visible\":true}",
+   "status": 200,
+   "body": "{\"transaction\":{\"raw_data\":{\"ref_block_bytes\":\"21f5\",\"ref_block_hash\":\"a07d683f2dc52651\",\"expiration\":1794744654000,\"contract\":[{\"parameter\":{\"value\":{\"owner_address\":\"T9yD14Nj9j7xAB4dbGeiX9h8unkKHxuWwb\",\"contract_address\":\"TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t\",\"data\":\"e47d6060000000000000000000000000d1c4bb7b2f39aba5707711719b2236b5b605af2e\"},\"type_url\":\"type.googleapis.com/protocol.TriggerSmartContract\"},\"type\":\"TriggerSmartContract\"}],\"timestamp\":1794744595007},\"ret\":[{}],\"txID\":\"0099cbd702676c4740bbec196ffe94be7ce047bc5a74858e840d1fe077f5ca7e\",\"visible\":true},\"constant_result\":[\"0000000000000000000000000000000000000000000000000000000000000000\"],\"result\":{\"result\":true},\"energy_used\":4658,\"energy_penalty\":3587}"
+  }
+ ]
+}

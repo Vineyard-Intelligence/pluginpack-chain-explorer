@@ -1,0 +1,16 @@
+{
+ "scenario": "tx-xrpl-ws",
+ "recorded": "2026-11-15",
+ "tape": [
+  {
+   "key": "POST https://xrplcluster.com/ {\"method\":\"tx\",\"params\":[{\"transaction\":\"8640FDDC85E543F691485936618C8E38BFF271A7A64FB88804C71112DB52E5EB\",\"binary\":false}]}",
+   "status": 429,
+   "body": "{\"error\":\"blocked by the test to exercise the next vendor\"}"
+  },
+  {
+   "key": "POST https://xrpl.ws/ {\"method\":\"tx\",\"params\":[{\"transaction\":\"8640FDDC85E543F691485936618C8E38BFF271A7A64FB88804C71112DB52E5EB\",\"binary\":false}]}",
+   "status": 200,
+   "body": "{\"result\":{\"Account\":\"rsnrorxzHhRstuPr25zVqG5SAH2sy7GvNM\",\"Amount\":\"1\",\"DeliverMax\":\"1\",\"Destination\":\"rLNaPoKeeBjZe2qs6x52yVPZpZ8td4dc6w\",\"DestinationTag\":1,\"Fee\":\"12\",\"LastLedgerSequence\":106528436,\"Sequence\":106534181,\"TransactionType\":\"Payment\",\"ctid\":\"C6597E9D00AB0000\",\"date\":840956010,\"hash\":\"8640FDDC85E543F691485936618C8E38BFF271A7A64FB88804C71112DB52E5EB\",\"inLedger\":106528413,\"ledger_index\":106528413,\"meta\":{\"TransactionIndex\":171,\"TransactionResult\":\"tesSUCCESS\",\"delivered_amount\":\"1\"},\"validated\":true,\"status\":\"success\"}}"
+  }
+ ]
+}

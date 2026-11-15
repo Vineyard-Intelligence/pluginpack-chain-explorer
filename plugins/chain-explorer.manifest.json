@@ -1,0 +1,1115 @@
+{
+  "identifier": "run.vineyard.pluginpacks.chain_explorer",
+  "content_type": "vineyard:pluginpack",
+  "name": "Chain Explorer",
+  "version": "1.0.0",
+  "summary": "Keyless blockchain lookups on fifteen networks: address history and counterparties, transactions, which network an address is on, TRON and XRP Ledger first funders, contracts and tokens, explorer labels and stablecoin freezes. No account or key.",
+  "description": "For following funds with no account or key, on fifteen networks from Bitcoin to TON: an address’s transfers and counterparties, a transaction’s inputs and outputs, which network a bare address is on, TRON and XRP Ledger first funders, contracts, tokens, explorer labels, and Tether and Circle freezes.\n\n**Needs:** nothing. The free tiers promise no uptime and limit requests.\n\n**Terms:** Routescan: internal, informational and personal use; commercial decisions need written approval, and non-private use must show “Powered by Routescan.io APIs”. BlockCypher: internal use only. SoChain: no bulk copying or redistribution. XRPSCAN: CC BY-NC-SA 4.0. Ethplorer and Binplorer ask for credit.\n\n**Who sees it:** each address and transaction goes to the explorers for its network: mempool.space, Blockstream, litecoinspace.org, Haskoin, SoChain, BlockCypher, insight.dash.org, Routescan, Blockscout, Binplorer, PublicNode, TronGrid, Tronscan, Solana Foundation, xrplcluster.com, xrpl.ws, XRPSCAN, toncenter. Not the addresses’ owners.\n\n**Read results with care:**\n\n- Figures cover the window each link states: on BNB Smart Chain 30 days at most, on Solana what its public node keeps.\n- Explorers can disagree on a balance; each names its source.\n- An EVM address that has only received tokens can stay undecided, as can any while a needed explorer is down.\n- A label is the explorer’s claim, not an attribution.\n\n**Source:** https://github.com/Vineyard-Intelligence/pluginpack-chain-explorer (Apache-2.0)",
+  "author": {
+    "name": "VINEYARD",
+    "url": "https://vineyard.run"
+  },
+  "license": "Apache-2.0",
+  "icon": "waypoints",
+  "platforms": {
+    "primary": "web",
+    "web": {
+      "runtime": "sandbox-js",
+      "entry": "dist/pack.mjs"
+    },
+    "desktop": {
+      "runtime": "sandbox-js",
+      "entry": "dist/pack.mjs"
+    }
+  },
+  "plugins": [
+    {
+      "identifier": "run.vineyard.plugins.chain_explorer_identify_network",
+      "content_type": "vineyard:plugin",
+      "name": "Identify Crypto Network",
+      "version": "1.0.0",
+      "description": "Decides the network of crypto addresses that do not name one — Crypto Addresses on evm or unknown, legacy Financial crypto addresses, and payment tracking IDs — and writes a Crypto Address on each network it finds, in canonical form, linked from the original by 'same address on' (or 'same as' for a legacy node) with the reason. A format that names one network settles it; a format several share (1…/3…, D…, 0x…) is decided by asking each network for activity, and linked only once every one of them has answered: a node an explorer did not answer for is left for the next run. Runs on the selection, or on up to 'Most nodes per run' candidates in the project when nothing is selected. The original node is left as it is.",
+      "icon": "scan-search",
+      "platforms": {
+        "primary": "web",
+        "web": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        },
+        "desktop": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        }
+      },
+      "io": {
+        "consumes": [],
+        "produces": [
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_address"
+          }
+        ]
+      },
+      "params": {
+        "type": "object",
+        "properties": {
+          "max_nodes": {
+            "type": "integer",
+            "title": "Most nodes per run",
+            "description": "With nothing selected: how many candidates in the project to take.",
+            "default": 50,
+            "minimum": 1,
+            "maximum": 500
+          }
+        }
+      },
+      "scopes": {
+        "graph": [
+          "node:read",
+          "node:create",
+          "node:update",
+          "edge:read",
+          "edge:create"
+        ],
+        "network": [
+          {
+            "endpoint": "https://mempool.space/api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Bitcoin addresses and transactions from mempool.space."
+          },
+          {
+            "endpoint": "https://blockstream.info/api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Bitcoin addresses and transactions from blockstream.info when mempool.space does not answer."
+          },
+          {
+            "endpoint": "https://litecoinspace.org/api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Litecoin addresses and transactions from litecoinspace.org."
+          },
+          {
+            "endpoint": "https://api.haskoin.com/bch/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Bitcoin Cash addresses and transactions from Haskoin."
+          },
+          {
+            "endpoint": "https://sochain.com/api/v3/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Litecoin, Dogecoin and Zcash addresses and transactions from SoChain."
+          },
+          {
+            "endpoint": "https://api.blockcypher.com/v1/ltc/main/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Litecoin addresses and transactions from BlockCypher."
+          },
+          {
+            "endpoint": "https://api.blockcypher.com/v1/doge/main/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Dogecoin addresses and transactions from BlockCypher."
+          },
+          {
+            "endpoint": "https://ethereum-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Ethereum for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://bsc-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask BNB Smart Chain for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://polygon-bor-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Polygon PoS for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://arbitrum-one-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Arbitrum One for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://optimism-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask OP Mainnet for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://base-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Base for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://avalanche-c-chain-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Avalanche C-Chain for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://etc.blockscout.com/api/eth-rpc",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Ethereum Classic for an address's activity, code and token metadata through Blockscout's JSON-RPC."
+          },
+          {
+            "endpoint": "https://toncenter.com/api/v3/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read TON accounts, transfers and transactions from toncenter without a key."
+          }
+        ]
+      },
+      "lifecycle": {
+        "persistence": "opt-in",
+        "controls": [
+          "progress",
+          "cancel"
+        ],
+        "progress": "determinate"
+      }
+    },
+    {
+      "identifier": "run.vineyard.plugins.chain_explorer_address_history",
+      "content_type": "vineyard:plugin",
+      "name": "Crypto Address History",
+      "version": "1.0.0",
+      "description": "Reads each selected Crypto Address's transfers on its network from a keyless source, newest first: Bitcoin, Litecoin, Bitcoin Cash, Dogecoin, Dash, Zcash, Ethereum, Avalanche C-Chain, OP Mainnet, BNB Smart Chain (last 30 days), Ethereum Classic, TRON, Solana, XRP Ledger and TON. On account chains it links the address 'sent to' and from its counterparties, with per-asset figures under summary_<source> and the window they cover; on the Bitcoin family it adds the transactions, linked 'input to' and 'output to'. Writes balance, history_examined and history_complete on the address. Polygon, Arbitrum and Base need a keyed pack.",
+      "icon": "history",
+      "platforms": {
+        "primary": "web",
+        "web": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        },
+        "desktop": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        }
+      },
+      "io": {
+        "consumes": [
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_address"
+          }
+        ],
+        "produces": [
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_address"
+          },
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_transaction"
+          }
+        ]
+      },
+      "params": {
+        "type": "object",
+        "properties": {
+          "max_pages": {
+            "type": "integer",
+            "title": "Pages per list",
+            "description": "How far back to read on sources that answer in pages (100–200 rows each): Ethereum, Avalanche, OP Mainnet, Ethereum Classic, TRON, XRP Ledger, TON.",
+            "default": 2,
+            "minimum": 1,
+            "maximum": 20
+          },
+          "max_txs": {
+            "type": "integer",
+            "title": "Transactions per address (Bitcoin family, Solana)",
+            "description": "Where each transaction is read on its own, how many of the newest to read.",
+            "default": 25,
+            "minimum": 1,
+            "maximum": 500
+          },
+          "max_counterparties": {
+            "type": "integer",
+            "title": "Most counterparties linked per address",
+            "description": "Account chains: the busiest pairs are kept, and the summary says how many were left out.",
+            "default": 50,
+            "minimum": 1,
+            "maximum": 500
+          },
+          "max_parties_per_tx": {
+            "type": "integer",
+            "title": "Most other addresses linked per transaction side",
+            "description": "Bitcoin family: the largest inputs and outputs besides the address itself.",
+            "default": 10,
+            "minimum": 0,
+            "maximum": 200
+          }
+        }
+      },
+      "scopes": {
+        "graph": [
+          "node:read",
+          "node:create",
+          "node:update",
+          "edge:read",
+          "edge:create"
+        ],
+        "network": [
+          {
+            "endpoint": "https://mempool.space/api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Bitcoin addresses and transactions from mempool.space."
+          },
+          {
+            "endpoint": "https://blockstream.info/api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Bitcoin addresses and transactions from blockstream.info when mempool.space does not answer."
+          },
+          {
+            "endpoint": "https://litecoinspace.org/api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Litecoin addresses and transactions from litecoinspace.org."
+          },
+          {
+            "endpoint": "https://api.haskoin.com/bch/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Bitcoin Cash addresses and transactions from Haskoin."
+          },
+          {
+            "endpoint": "https://sochain.com/api/v3/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Litecoin, Dogecoin and Zcash addresses and transactions from SoChain."
+          },
+          {
+            "endpoint": "https://api.blockcypher.com/v1/ltc/main/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Litecoin addresses and transactions from BlockCypher."
+          },
+          {
+            "endpoint": "https://api.blockcypher.com/v1/doge/main/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Dogecoin addresses and transactions from BlockCypher."
+          },
+          {
+            "endpoint": "https://api.blockcypher.com/v1/dash/main/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Dash addresses and transactions from BlockCypher."
+          },
+          {
+            "endpoint": "https://insight.dash.org/insight-api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Dash addresses and transactions from insight.dash.org."
+          },
+          {
+            "endpoint": "https://api.routescan.io/v2/network/mainnet/evm/1/etherscan/api",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Ethereum transfers, contract creators and transactions from Routescan."
+          },
+          {
+            "endpoint": "https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Avalanche C-Chain transfers, contract creators and transactions from Routescan."
+          },
+          {
+            "endpoint": "https://eth.blockscout.com/api/v2/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Ethereum addresses, transfers and labels from Blockscout."
+          },
+          {
+            "endpoint": "https://explorer.optimism.io/api/v2/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read OP Mainnet addresses, transfers and labels from its Blockscout explorer."
+          },
+          {
+            "endpoint": "https://etc.blockscout.com/api/v2/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Ethereum Classic addresses, transfers and labels from Blockscout."
+          },
+          {
+            "endpoint": "https://api.binplorer.com/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read BNB Smart Chain transfers of the last 30 days from Binplorer, with its shared free key."
+          },
+          {
+            "endpoint": "https://api.trongrid.io/v1/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read TRON accounts and transfers from TronGrid without a key."
+          },
+          {
+            "endpoint": "https://apilist.tronscanapi.com/api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read TRON transfers, transactions and public tags from Tronscan."
+          },
+          {
+            "endpoint": "https://api.mainnet-beta.solana.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Read Solana accounts and transactions from the Solana Foundation's public RPC."
+          },
+          {
+            "endpoint": "https://solana-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Read Solana accounts and transactions from PublicNode's RPC."
+          },
+          {
+            "endpoint": "https://xrplcluster.com/",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Read XRP Ledger accounts and transactions from xrplcluster.com."
+          },
+          {
+            "endpoint": "https://xrpl.ws/",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Read XRP Ledger accounts and transactions from xrpl.ws when xrplcluster.com does not answer."
+          },
+          {
+            "endpoint": "https://toncenter.com/api/v3/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read TON accounts, transfers and transactions from toncenter without a key."
+          }
+        ]
+      },
+      "lifecycle": {
+        "persistence": "opt-in",
+        "controls": [
+          "progress",
+          "cancel"
+        ],
+        "progress": "determinate"
+      }
+    },
+    {
+      "identifier": "run.vineyard.plugins.chain_explorer_transaction",
+      "content_type": "vineyard:plugin",
+      "name": "Crypto Transaction",
+      "version": "1.0.0",
+      "description": "Reads each selected Crypto Transaction on its network from a keyless source and writes its block, time, status, fee and kind. Links every address that paid into it 'input to' the transaction and every address it paid 'output to', with the amounts (on the Bitcoin family, each input and output). Same networks as Crypto Address History; a token amount whose decimals the token does not give stays in base units and the link says base_units.",
+      "icon": "arrow-left-right",
+      "platforms": {
+        "primary": "web",
+        "web": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        },
+        "desktop": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        }
+      },
+      "io": {
+        "consumes": [
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_transaction"
+          }
+        ],
+        "produces": [
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_transaction"
+          },
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_address"
+          }
+        ]
+      },
+      "params": {
+        "type": "object",
+        "properties": {
+          "max_parties": {
+            "type": "integer",
+            "title": "Most addresses linked per side",
+            "description": "Largest amounts first. A batch payout can pay hundreds of addresses.",
+            "default": 50,
+            "minimum": 1,
+            "maximum": 500
+          }
+        }
+      },
+      "scopes": {
+        "graph": [
+          "node:read",
+          "node:create",
+          "node:update",
+          "edge:read",
+          "edge:create"
+        ],
+        "network": [
+          {
+            "endpoint": "https://mempool.space/api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Bitcoin addresses and transactions from mempool.space."
+          },
+          {
+            "endpoint": "https://blockstream.info/api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Bitcoin addresses and transactions from blockstream.info when mempool.space does not answer."
+          },
+          {
+            "endpoint": "https://litecoinspace.org/api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Litecoin addresses and transactions from litecoinspace.org."
+          },
+          {
+            "endpoint": "https://api.haskoin.com/bch/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Bitcoin Cash addresses and transactions from Haskoin."
+          },
+          {
+            "endpoint": "https://sochain.com/api/v3/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Litecoin, Dogecoin and Zcash addresses and transactions from SoChain."
+          },
+          {
+            "endpoint": "https://api.blockcypher.com/v1/ltc/main/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Litecoin addresses and transactions from BlockCypher."
+          },
+          {
+            "endpoint": "https://api.blockcypher.com/v1/doge/main/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Dogecoin addresses and transactions from BlockCypher."
+          },
+          {
+            "endpoint": "https://api.blockcypher.com/v1/dash/main/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Dash addresses and transactions from BlockCypher."
+          },
+          {
+            "endpoint": "https://insight.dash.org/insight-api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Dash addresses and transactions from insight.dash.org."
+          },
+          {
+            "endpoint": "https://api.routescan.io/v2/network/mainnet/evm/1/etherscan/api",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Ethereum transfers, contract creators and transactions from Routescan."
+          },
+          {
+            "endpoint": "https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Avalanche C-Chain transfers, contract creators and transactions from Routescan."
+          },
+          {
+            "endpoint": "https://eth.blockscout.com/api/v2/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Ethereum addresses, transfers and labels from Blockscout."
+          },
+          {
+            "endpoint": "https://explorer.optimism.io/api/v2/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read OP Mainnet addresses, transfers and labels from its Blockscout explorer."
+          },
+          {
+            "endpoint": "https://etc.blockscout.com/api/v2/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Ethereum Classic addresses, transfers and labels from Blockscout."
+          },
+          {
+            "endpoint": "https://api.binplorer.com/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read BNB Smart Chain transfers of the last 30 days from Binplorer, with its shared free key."
+          },
+          {
+            "endpoint": "https://ethereum-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Ethereum for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://bsc-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask BNB Smart Chain for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://polygon-bor-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Polygon PoS for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://arbitrum-one-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Arbitrum One for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://optimism-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask OP Mainnet for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://base-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Base for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://avalanche-c-chain-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Avalanche C-Chain for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://etc.blockscout.com/api/eth-rpc",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Ethereum Classic for an address's activity, code and token metadata through Blockscout's JSON-RPC."
+          },
+          {
+            "endpoint": "https://api.trongrid.io/wallet/",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Read TRON transactions and contracts, and call read-only contract functions, through TronGrid."
+          },
+          {
+            "endpoint": "https://apilist.tronscanapi.com/api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read TRON transfers, transactions and public tags from Tronscan."
+          },
+          {
+            "endpoint": "https://api.mainnet-beta.solana.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Read Solana accounts and transactions from the Solana Foundation's public RPC."
+          },
+          {
+            "endpoint": "https://solana-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Read Solana accounts and transactions from PublicNode's RPC."
+          },
+          {
+            "endpoint": "https://xrplcluster.com/",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Read XRP Ledger accounts and transactions from xrplcluster.com."
+          },
+          {
+            "endpoint": "https://xrpl.ws/",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Read XRP Ledger accounts and transactions from xrpl.ws when xrplcluster.com does not answer."
+          },
+          {
+            "endpoint": "https://toncenter.com/api/v3/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read TON accounts, transfers and transactions from toncenter without a key."
+          }
+        ]
+      },
+      "lifecycle": {
+        "persistence": "opt-in",
+        "controls": [
+          "progress",
+          "cancel"
+        ],
+        "progress": "determinate"
+      }
+    },
+    {
+      "identifier": "run.vineyard.plugins.chain_explorer_first_funder",
+      "content_type": "vineyard:plugin",
+      "name": "Crypto Activation and First Funder",
+      "version": "1.0.0",
+      "description": "For TRON and XRP Ledger addresses: when the account was activated and which address first funded it, read without a key. TRON follows the activation, not the earliest incoming transfer; when the activation is not a plain transfer it says 'could not tell' rather than guessing. Writes activated_at, first_funder and first_funding_tx, and adds first_funding to the funder's 'sent to' link. A node with a memo (a destination tag) is skipped, since activation is the account's. EVM and Solana first funders need a keyed pack.",
+      "icon": "sprout",
+      "platforms": {
+        "primary": "web",
+        "web": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        },
+        "desktop": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        }
+      },
+      "io": {
+        "consumes": [
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_address"
+          }
+        ],
+        "produces": [
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_address"
+          }
+        ]
+      },
+      "scopes": {
+        "graph": [
+          "node:read",
+          "node:create",
+          "node:update",
+          "edge:read",
+          "edge:create"
+        ],
+        "network": [
+          {
+            "endpoint": "https://api.trongrid.io/v1/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read TRON accounts and transfers from TronGrid without a key."
+          },
+          {
+            "endpoint": "https://api.xrpscan.com/api/v1/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read XRP Ledger account activation and verified names from XRPSCAN."
+          }
+        ]
+      },
+      "lifecycle": {
+        "persistence": "opt-in",
+        "controls": [
+          "progress",
+          "cancel"
+        ],
+        "progress": "determinate"
+      }
+    },
+    {
+      "identifier": "run.vineyard.plugins.chain_explorer_contract_token",
+      "content_type": "vineyard:plugin",
+      "name": "Crypto Contract and Token",
+      "version": "1.0.0",
+      "description": "Says whether each selected Crypto Address is a contract or an ordinary account (address_kind; an EIP-7702 delegated wallet stays an account), and for a token contract writes a Crypto Token with its standard, symbol, name and decimals, linked 'token contract'. For a contract it adds the deployer and deployment transaction where a keyless source has them — Ethereum, Avalanche C-Chain, OP Mainnet and TRON — linking the deployer 'deployed'. EVM chains (all eight), TRON and Solana.",
+      "icon": "file-code",
+      "platforms": {
+        "primary": "web",
+        "web": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        },
+        "desktop": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        }
+      },
+      "io": {
+        "consumes": [
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_address"
+          }
+        ],
+        "produces": [
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_address"
+          },
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_token"
+          }
+        ]
+      },
+      "scopes": {
+        "graph": [
+          "node:read",
+          "node:create",
+          "node:update",
+          "edge:read",
+          "edge:create"
+        ],
+        "network": [
+          {
+            "endpoint": "https://ethereum-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Ethereum for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://bsc-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask BNB Smart Chain for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://polygon-bor-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Polygon PoS for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://arbitrum-one-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Arbitrum One for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://optimism-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask OP Mainnet for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://base-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Base for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://avalanche-c-chain-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Avalanche C-Chain for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://etc.blockscout.com/api/eth-rpc",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Ethereum Classic for an address's activity, code and token metadata through Blockscout's JSON-RPC."
+          },
+          {
+            "endpoint": "https://api.routescan.io/v2/network/mainnet/evm/1/etherscan/api",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Ethereum transfers, contract creators and transactions from Routescan."
+          },
+          {
+            "endpoint": "https://api.routescan.io/v2/network/mainnet/evm/43114/etherscan/api",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Avalanche C-Chain transfers, contract creators and transactions from Routescan."
+          },
+          {
+            "endpoint": "https://eth.blockscout.com/api/v2/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Ethereum addresses, transfers and labels from Blockscout."
+          },
+          {
+            "endpoint": "https://explorer.optimism.io/api/v2/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read OP Mainnet addresses, transfers and labels from its Blockscout explorer."
+          },
+          {
+            "endpoint": "https://api.trongrid.io/wallet/",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Read TRON transactions and contracts, and call read-only contract functions, through TronGrid."
+          },
+          {
+            "endpoint": "https://api.mainnet-beta.solana.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Read Solana accounts and transactions from the Solana Foundation's public RPC."
+          },
+          {
+            "endpoint": "https://solana-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Read Solana accounts and transactions from PublicNode's RPC."
+          }
+        ]
+      },
+      "lifecycle": {
+        "persistence": "opt-in",
+        "controls": [
+          "progress",
+          "cancel"
+        ],
+        "progress": "determinate"
+      }
+    },
+    {
+      "identifier": "run.vineyard.plugins.chain_explorer_public_labels",
+      "content_type": "vineyard:plugin",
+      "name": "Crypto Public Labels",
+      "version": "1.0.0",
+      "description": "Reads the label a block explorer publishes for each selected Crypto Address and writes it as public_label with label_source: Tronscan's public tag on TRON (e.g. an exchange hot wallet), Blockscout's name tags on Ethereum, OP Mainnet and Ethereum Classic, and XRPSCAN's account names on the XRP Ledger, with whether XRPSCAN verified the name. A label is the explorer's claim, not an attribution.",
+      "icon": "tag",
+      "platforms": {
+        "primary": "web",
+        "web": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        },
+        "desktop": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        }
+      },
+      "io": {
+        "consumes": [
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_address"
+          }
+        ],
+        "produces": [
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_address"
+          }
+        ]
+      },
+      "scopes": {
+        "graph": [
+          "node:read",
+          "node:update"
+        ],
+        "network": [
+          {
+            "endpoint": "https://apilist.tronscanapi.com/api/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read TRON transfers, transactions and public tags from Tronscan."
+          },
+          {
+            "endpoint": "https://eth.blockscout.com/api/v2/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Ethereum addresses, transfers and labels from Blockscout."
+          },
+          {
+            "endpoint": "https://explorer.optimism.io/api/v2/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read OP Mainnet addresses, transfers and labels from its Blockscout explorer."
+          },
+          {
+            "endpoint": "https://etc.blockscout.com/api/v2/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read Ethereum Classic addresses, transfers and labels from Blockscout."
+          },
+          {
+            "endpoint": "https://api.xrpscan.com/api/v1/",
+            "methods": [
+              "GET"
+            ],
+            "purpose": "Read XRP Ledger account activation and verified names from XRPSCAN."
+          }
+        ]
+      },
+      "lifecycle": {
+        "persistence": "opt-in",
+        "controls": [
+          "progress",
+          "cancel"
+        ],
+        "progress": "determinate"
+      }
+    },
+    {
+      "identifier": "run.vineyard.plugins.chain_explorer_freeze_status",
+      "content_type": "vineyard:plugin",
+      "name": "Stablecoin Freeze Status",
+      "version": "1.0.0",
+      "description": "Asks the issuers' contracts whether each selected Crypto Address is frozen: USDT and USDC on Ethereum, USDT on TRON. A frozen address gets frozen_by_issuer (e.g. \"USDT (Tether)\"); every address checked gets frozen_checked_at. An address the issuer has since unfrozen keeps an older frozen_by_issuer, which the summary points out.",
+      "icon": "snowflake",
+      "platforms": {
+        "primary": "web",
+        "web": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        },
+        "desktop": {
+          "runtime": "sandbox-js",
+          "entry": "dist/pack.mjs"
+        }
+      },
+      "io": {
+        "consumes": [
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_address"
+          }
+        ],
+        "produces": [
+          {
+            "typepack": "run.vineyard.typepacks.cryptocurrency",
+            "category": "cryptocurrency",
+            "name": "crypto_address"
+          }
+        ]
+      },
+      "scopes": {
+        "graph": [
+          "node:read",
+          "node:update"
+        ],
+        "network": [
+          {
+            "endpoint": "https://ethereum-rpc.publicnode.com",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Ask Ethereum for an address's activity, code and token metadata (public JSON-RPC)."
+          },
+          {
+            "endpoint": "https://api.trongrid.io/wallet/",
+            "methods": [
+              "POST"
+            ],
+            "purpose": "Read TRON transactions and contracts, and call read-only contract functions, through TronGrid."
+          }
+        ]
+      },
+      "lifecycle": {
+        "persistence": "opt-in",
+        "controls": [
+          "progress",
+          "cancel"
+        ],
+        "progress": "determinate"
+      }
+    }
+  ]
+}

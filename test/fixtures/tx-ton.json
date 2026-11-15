@@ -1,0 +1,11 @@
+{
+ "scenario": "tx-ton",
+ "recorded": "2026-11-15",
+ "tape": [
+  {
+   "key": "GET https://toncenter.com/api/v3/transactions?hash=3612eb6ef718ba8ef55613a48dac7f5927c069ff47e0e416455bca61ee119611&limit=1 ",
+   "status": 200,
+   "body": "{\"transactions\":[{\"account\":\"0:83DFD552E63729B472FCBCC8C45EBCC6691702558B68EC7527E1BA403A0F31A8\",\"hash\":\"NhLrbvcYuo71VhOkjax/WSfAaf9H4OQWRVvKYe4RlhE=\",\"lt\":\"116778852000015\",\"now\":1794726723,\"prev_trans_hash\":\"p1Dy/T6RMV/QBoQ+f1bAroAWUhHmk04FrqXkQYsiN0A=\",\"prev_trans_lt\":\"116778702000017\",\"orig_status\":\"active\",\"end_status\":\"active\",\"total_fees\":\"6668\",\"total_fees_extra_currencies\":{},\"description\":{\"type\":\"ord\",\"aborted\":false,\"destroyed\":false,\"credit_first\":true},\"in_msg\":{\"hash\":\"zQHuDWSqMoUa6Z36czKudmbgOSORg/lisWSZzX9Kb8A=\",\"source\":\"0:157AE7D159AA499DBE715629414F1B082410820EDDFB56E6D76BE7989D726461\",\"destination\":\"0:83DFD552E63729B472FCBCC8C45EBCC6691702558B68EC7527E1BA403A0F31A8\",\"value\":\"50000000\",\"value_extra_currencies\":{},\"fwd_fee\":\"44446\",\"ihr_fee\":\"0\",\"extra_flags\":\"0\",\"created_lt\":\"116778852000014\",\"created_at\":\"1794726723\",\"opcode\":\"0x00000000\",\"decoded_opcode\":\"text_comment\",\"ihr_disabled\":true,\"bounce\":false,\"bounced\":false,\"import_fee\":null},\"out_msgs\":[],\"account_state_before\":{\"hash\":\"bMFIHQA39ckXNcJ/1yTR5UwS/NH8rMJ6h+UUzk+PYIs=\",\"balance\":\"1592543943443901\",\"extra_currencies\":{},\"account_status\":\"active\",\"frozen_hash\":null,\"data_hash\":\"4O4a0XnqF0b5MpZIpFTlll4r2Gn+MRiukcnVhtSdFG8=\",\"code_hash\":\"hNr6RJ+Ypph3ibojI1gHK8D3bcRSQAKl0JGLmnXS1Zk=\"},\"account_state_after\":{\"hash\":\"ClIdAGxUCEe0Z9v60bAMmC85a47reu4N/B3BconhGW4=\",\"balance\":\"1592543993437233\",\"extra_currencies\":{},\"account_status\":\"active\",\"frozen_hash\":null,\"data_hash\":\"4O4a0XnqF0b5MpZIpFTlll4r2Gn+MRiukcnVhtSdFG8=\",\"code_hash\":\"hNr6RJ+Ypph3ibojI1gHK8D3bcRSQAKl0JGLmnXS1Zk=\"},\"emulated\":false,\"finality\":\"finalized\"}]}"
+  }
+ ]
+}

@@ -1,0 +1,31 @@
+{
+ "scenario": "history-litecoin-sochain",
+ "recorded": "2026-11-15",
+ "tape": [
+  {
+   "key": "GET https://litecoinspace.org/api/address/LKcKHmHMYA9n5htDNAAcngSmmgXg8LGpBB ",
+   "status": 429,
+   "body": "{\"error\":\"blocked by the test to exercise the next vendor\"}"
+  },
+  {
+   "key": "GET https://sochain.com/api/v3/address_summary/LTC/LKcKHmHMYA9n5htDNAAcngSmmgXg8LGpBB ",
+   "status": 200,
+   "body": "{\"status\":\"success\",\"data\":{\"txs_sent\":1,\"txs_received\":293,\"txs_total\":294,\"confirmed_balance\":\"94.72969565\",\"unconfirmed_balance\":\"0.00000000\",\"confirmed_received\":\"96.60282179\",\"first_active\":{\"height\":3072087,\"time\":1773489541},\"last_active\":{\"height\":3213547,\"time\":1794742981}}}"
+  },
+  {
+   "key": "GET https://sochain.com/api/v3/transactions/LTC/LKcKHmHMYA9n5htDNAAcngSmmgXg8LGpBB/1 ",
+   "status": 200,
+   "body": "{\"status\":\"success\",\"data\":{\"transactions\":[{\"hash\":\"798fb0d6d4de8f1486b03a82deaa287a0c68b2ff717fdf2b32711621f165f6e3\",\"value_sent\":\"0.00000000\",\"value_received\":\"0.22239062\",\"balance_change\":\"0.22239062\",\"time\":1794742981,\"block\":3213547},{\"hash\":\"69ae44e8fbc3e8dce7d39f37278bb7aa08993ca15094976bdee90c6d4d9c56e2\",\"value_sent\":\"0.00000000\",\"value_received\":\"0.22238936\",\"balance_change\":\"0.22238936\",\"time\":1794742981,\"block\":3213547},{\"hash\":\"4e37f11999366b507b86f2a47e822c3887bc49299ccad55c49254ade4b852ad1\",\"value_sent\":\"0.00000000\",\"value_received\":\"0.42636035\",\"balance_change\":\"0.42636035\",\"time\":1794742981,\"block\":3213547},{\"hash\":\"46002265fa9ff5895258b0a30e3e2dd8403400e1d7967c0594fa528ed7577dc9\",\"value_sent\":\"0.00000000\",\"value_received\":\"0.22239042\",\"balance_change\":\"0.22239042\",\"time\":1794742981,\"block\":3213547},{\"hash\":\"81d6690bf4ad60ce53f393e01c543851e79cd86edfac56688d3f3269a7dc26b5\",\"value_sent\":\"0.00000000\",\"value_received\":\"0.22239042\",\"balance_change\":\"0.22239042\",\"time\":1794742981,\"block\":3213547},{\"hash\":\"017f0fcbb524fdede7ea7d0a7b9e7169cb7c13ccb356c865ada08527a69163b4\",\"value_sent\":\"0.00000000\",\"value_received\":\"0.22239061\",\"balance_change\":\"0.22239061\",\"time\":1794742981,\"block\":3213547},{\"hash\":\"2ebae0461c4b16276eed98e009a5006917bdb31eccad5d851478ad8ad1e00db4\",\"value_sent\":\"0.00000000\",\"value_received\":\"0.22238974\",\"balance_change\":\"0.22238974\",\"time\":1794742981,\"block\":3213547},{\"hash\":\"ca17c0f6b7d4d329a0ccdd4fcdac1e1abf0d184b21fda668d475a13388540eac\",\"value_sent\":\"0.00000000\",\"value_received\":\"0.22239061\",\"balance_change\":\"0.22239061\",\"time\":1794742981,\"block\":3213547},{\"hash\":\"63db9dbfc4c66824b7674db659c30221677c998a94ee6d6f97d4c9881976d7ec\",\"value_sent\":\"0.00000000\",\"value_received\":\"0.22239062\",\"balance_change\":\"0.22239062\",\"time\":1794742981,\"block\":3213547},{\"hash\":\"64cbfe976331c2d10cecd9cf4c45a745c01cc86276b8a319b2122022963716a9\",\"value_sent\":\"0.00000000\",\"value_received\":\"0.22238936\",\"balance_change\":\"0.22238936\",\"time\":1794742981,\"block\":3213547}]}}"
+  },
+  {
+   "key": "GET https://sochain.com/api/v3/transaction/LTC/798fb0d6d4de8f1486b03a82deaa287a0c68b2ff717fdf2b32711621f165f6e3 ",
+   "status": 200,
+   "body": "{\"status\":\"success\",\"data\":{\"hash\":\"798fb0d6d4de8f1486b03a82deaa287a0c68b2ff717fdf2b32711621f165f6e3\",\"confirmations\":12,\"size\":225,\"vsize\":144,\"weight\":573,\"version\":2,\"locktime\":3213545,\"block_hash\":\"649a25d33460ae6c085f65e4c7960d1d36b9af3fe6311a7e828f9d36cd2f764a\",\"block_height\":3213547,\"time\":1794742981,\"inputs_n\":1,\"outputs_n\":2,\"inputs_value\":\"218.84632703\",\"outputs_value\":\"218.84631263\",\"fee\":\"0.00001440\",\"inputs\":[{\"index\":0,\"value\":\"218.84632703\",\"address\":\"ltc1q970s8fc8zfyrljd8f7axug8ctcywkupuhn00ed\",\"previous_output\":{\"hash\":\"982cca36423849717d5a9d47fcb2c6cbed1252337c3557d32808eb11f78a4c3b\",\"index\":0},\"sequence\":4294967294}],\"outputs\":[{\"index\":0,\"value\":\"218.62392201\",\"address\":\"ltc1q0a7rxujfsh0ty7sg762sv5mlhvkk9plue6k6ew\",\"type\":\"witness_v0_keyhash\",\"script\":{\"hex\":\"00147f7c33724985deb27a08f69506537fbb2d6287fc\",\"asm\":\"0 7f7c33724985deb27a08f69506537fbb2d6287fc\"},\"spent\":null,\"is_change\":null},{\"index\":1,\"value\":\"0.22239062\",\"address\":\"LKcKHmHMYA9n5htDNAAcngSmmgXg8LGpBB\",\"type\":\"pubkeyhash\",\"script\":{\"hex\":\"76a914043ab4123c57308cbaa24ec806208b2332aaebc588ac\",\"asm\":\"OP_DUP OP_HASH160 043ab4123c57308cbaa24ec806208b2332aaebc5 OP_EQUALVERIFY OP_CHECKSIG\"},\"spent\":null,\"is_change\":null}],\"kind\":\"payment\",\"heuristic\":false}}"
+  },
+  {
+   "key": "GET https://sochain.com/api/v3/transaction/LTC/69ae44e8fbc3e8dce7d39f37278bb7aa08993ca15094976bdee90c6d4d9c56e2 ",
+   "status": 200,
+   "body": "{\"status\":\"success\",\"data\":{\"hash\":\"69ae44e8fbc3e8dce7d39f37278bb7aa08993ca15094976bdee90c6d4d9c56e2\",\"confirmations\":12,\"size\":225,\"vsize\":144,\"weight\":573,\"version\":2,\"locktime\":3213546,\"block_hash\":\"649a25d33460ae6c085f65e4c7960d1d36b9af3fe6311a7e828f9d36cd2f764a\",\"block_height\":3213547,\"time\":1794742981,\"inputs_n\":1,\"outputs_n\":2,\"inputs_value\":\"0.41844042\",\"outputs_value\":\"0.41842602\",\"fee\":\"0.00001440\",\"inputs\":[{\"index\":0,\"value\":\"0.41844042\",\"address\":\"ltc1qa3ajm9at3tm5fkxpk5x64my0dhxvfw9q5e75km\",\"previous_output\":{\"hash\":\"9987635df5eec9bd38b31ab0636035a8451148f694548eabd7d58ee1c15d0313\",\"index\":0},\"sequence\":4294967294}],\"outputs\":[{\"index\":0,\"value\":\"0.19603666\",\"address\":\"ltc1qfflw4rl4l3ntdhq8ddh0rghs78sx2mp777al6h\",\"type\":\"witness_v0_keyhash\",\"script\":{\"hex\":\"00144a7eea8ff5fc66b6dc076b6ef1a2f0f1e0656c3e\",\"asm\":\"0 4a7eea8ff5fc66b6dc076b6ef1a2f0f1e0656c3e\"},\"spent\":{\"hash\":\"23aeaf3d65f10476f6ff66462060e9db54385096a9fb1beb63fbdf7523e0bdfa\",\"index\":2},\"is_change\":null},{\"index\":1,\"value\":\"0.22238936\",\"address\":\"LKcKHmHMYA9n5htDNAAcngSmmgXg8LGpBB\",\"type\":\"pubkeyhash\",\"script\":{\"hex\":\"76a914043ab4123c57308cbaa24ec806208b2332aaebc588ac\",\"asm\":\"OP_DUP OP_HASH160 043ab4123c57308cbaa24ec806208b2332aaebc5 OP_EQUALVERIFY OP_CHECKSIG\"},\"spent\":null,\"is_change\":null}],\"kind\":\"payment\",\"heuristic\":false}}"
+  }
+ ]
+}

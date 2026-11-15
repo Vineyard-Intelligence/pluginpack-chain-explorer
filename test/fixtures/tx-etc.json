@@ -1,0 +1,16 @@
+{
+ "scenario": "tx-etc",
+ "recorded": "2026-11-15",
+ "tape": [
+  {
+   "key": "GET https://etc.blockscout.com/api/v2/transactions/0xa57574ced6127af3abdd51f6414cdb7ecd3e6b80ccc772975d4e3c524ece7059 ",
+   "status": 200,
+   "body": "{\"has_error_in_internal_transactions\":false,\"block_number\":23599528,\"transaction_types\":[\"coin_transfer\"],\"nonce\":6573261,\"timestamp\":\"2025-12-15T16:30:40.000000Z\",\"token_transfers\":[],\"fhe_operations_count\":0,\"fee\":{\"type\":\"actual\",\"value\":\"210000000000000\"},\"method\":null,\"to\":{\"ens_domain_name\":null,\"hash\":\"0x713bCccA696A415Ad9a8b1e5e53d87e55a85eCb6\",\"is_contract\":false,\"is_scam\":false,\"is_verified\":false,\"metadata\":null,\"name\":null,\"proxy_type\":null,\"public_tags\":[],\"reputation\":\"ok\"},\"status\":\"ok\",\"from\":{\"ens_domain_name\":null,\"hash\":\"0x9EAb4b0fC468A7f5D46228bf5a76cB52370d068D\",\"is_contract\":false,\"is_scam\":false,\"is_verified\":false,\"metadata\":null,\"name\":null,\"proxy_type\":null,\"public_tags\":[],\"reputation\":\"ok\"},\"value\":\"1225000000000000000\",\"created_contract\":null,\"transaction_tag\":null,\"position\":0,\"confirmations\":2139209,\"token_transfers_overflow\":false,\"type\":0,\"revert_reason\":null,\"hash\":\"0xa57574ced6127af3abdd51f6414cdb7ecd3e6b80ccc772975d4e3c524ece7059\",\"result\":\"success\",\"is_pending_update\":false}"
+  },
+  {
+   "key": "GET https://etc.blockscout.com/api/v2/transactions/0xa57574ced6127af3abdd51f6414cdb7ecd3e6b80ccc772975d4e3c524ece7059/internal-transactions ",
+   "status": 200,
+   "body": "{\"items\":[],\"meta\":{\"message\":null,\"status\":1},\"next_page_params\":null}"
+  }
+ ]
+}
